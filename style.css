@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins&family=Saira+Extra+Condensed:wght@500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.content-container{
+    display: flex;
+    justify-content: space-around;
+}
+
+.abo{
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+}
+
+.abo li{
+    flex: 1;
+}
+.fa-trash{
+    pointer-events: none;
+}
+
+.abo-price{
+    background: red;
+}
