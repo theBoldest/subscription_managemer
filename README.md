@@ -1,2 +1,2 @@
-# subscription_managemer
-A subscription manger app
+# subscription_manager
+A subscription manager app
