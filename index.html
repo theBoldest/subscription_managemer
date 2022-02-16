@@ -6,23 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
-    <title>Gestionnaire d'abonnements</title>
-</head>
-
-<body>
+    <title>Subscription Manager</title>
+    <h1 class="title">Subscription Manager</h1>
     <div class="content-container">
-        <div class="left">
-            <p>Nom de l'abonnement</p><input type="text"  class="name">
-            <p>Prix mensuel</p><input type="number" class="price">
-            <input type="button" value="Valide" class="validate">
-        </div>
-        <div class="right">
-            <h1>MES ABOS</h1>
-            <ul class="abo-list">
-
-            </ul>
-            <p class="montant-total"></p>
-        </div>
+      <div class="left">
+        <div class="first-input">
+        <p>Subscription Name</p><input type="text" class="name" placeholder="ex : Netflix">
+      </div>
+      <div class="second-input">
+        <p>Monthly Price</p><input type="number" class="price" placeholder="ex : 13,49">
+      </div>
+        <input type="button" value="Submit" class="validate">
+      </div>
+      <div class="right">
+        <h1>my subscriptions</h1>
+        <ul class="abo-list">
+    
+        </ul>
+        <p class="montant-total"></p>
+      </div>
     </div>
     <script src="app.js"></script>
 </body>
