@@ -5,24 +5,159 @@
     box-sizing: border-box;
 }
 
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: rgb(94, 94, 94);
+    color: honeydew;
+}
 .content-container{
     display: flex;
     justify-content: space-around;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+}
+h1{
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+    text-transform:uppercase;
+    color: honeydew;
+    padding-bottom: 5px;
+}
+.title{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
 }
 
+.montant-total{
+    margin-top: 20px;
+    padding: 8px;
+    border-radius: 8px;
+}
+/* inputs */
+.name, .price{
+    background-color: rgb(94, 94, 94);
+    border: none;
+    border-bottom: solid 1px honeydew;
+    color: honeydew;
+    font-size: 1rem;
+    font-weight: 1000;
+    background: none;
+}
+
+.name::after{
+    border: none;
+    border-color: red;
+}
+::placeholder {
+    color: rgb(183, 185, 183);
+    font-size: 1 rem;
+  }
+
+input:focus::placeholder {
+    color: transparent;
+  }
+/* 2 containers */
+
+.left{
+    height: 25vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    top: 80px;
+}
+.right{
+    position: absolute;
+    top: 40vh;
+}
+
+/* button */
+
+
+/* list */
+span{
+  padding-right: 5px;
+}
 .abo{
     display: flex;
+    margin-right: 0px;
     justify-content: space-between;
     list-style-type: none;
+    align-content: center;
 }
 
 .abo li{
     flex: 1;
+    padding-right: 10px;
+}
+
+.fa-pen{
+    pointer-events: none;
+    color: white;
+
 }
 .fa-trash{
     pointer-events: none;
+    color: white;
+    
 }
 
-.abo-price{
-    background: red;
+.trashAbo{
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: rgb(148, 54, 54);
+	border-style: none;
+}
+
+.modifyAbo{
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: rgb(79, 107, 87);
+	border-style: none;
+}
+/* validate button */
+.validate {
+  background-color:rgb(94, 94, 94);
+  border: 1px solid honeydew;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: honeydew;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  padding: 4px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  touch-action: manipulation;
+  transition: box-shadow .2s,-ms-transform .1s,-webkit-transform .1s,transform .1s;
+  user-select: none;
+  -webkit-user-select: none;
+  width: auto;
+}
+
+.validate:focus-visible {
+  box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
+  transition: box-shadow .2s;
+}
+
+.validate:active {
+  background-color:rgb(94, 94, 94);
+  border-color: honeydew;
+  transform: scale(.96);
+}
+
+.validate:disabled {
+  border-color: #DDDDDD;
+  color: #DDDDDD;
+  cursor: not-allowed;
+  opacity: 1;
 }
