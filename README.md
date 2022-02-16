@@ -2,4 +2,4 @@
 A subscription manager app
 
 //
-Enter the Name of your subscriptions and their prices and see how much do you spentd per month in subscription.
+Enter the Name of your subscriptions and their prices and see how much do you spend per month in subscription.
