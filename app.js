@@ -11,64 +11,64 @@ const montantTotal = document.querySelector('.montant-total');
 validate.addEventListener('click', addAbo);
 abosList.addEventListener('click', clickModify);
 
+// the main array 
+let abos = []; 
 
-//functions
-function addAbo(event){
-    event.preventDefault();
-    //creating the NewAbo DIV
-    const Abodiv = document.createElement('div');
-    Abodiv.classList.add('abo');
-    //creating a LI 
-    const newAbo = document.createElement('li');
-    newAbo.innerText = nameInput.value + ' ' ;
-    newAbo.classList.add('abo-item');
-    Abodiv.appendChild(newAbo);
-    //creating a div Price of one Sub
-    const oneAboPrice = document.createElement('div');
-    oneAboPrice.classList.add('abo-price');
-    oneAboPrice.innerText = price.value;
-    Abodiv.appendChild(oneAboPrice);
-    //modify button
-    const modifyAbo = document.createElement('button');
-    modifyAbo.innerHTML = '<i class="fa-solid fa-pen"></i>';
-    modifyAbo.classList.add('modifyAbo');
-    Abodiv.appendChild(modifyAbo);
-    //trash button
-    const trashAbo = document.createElement('button');
-    trashAbo.innerHTML = '<i class="fa fa-trash"></i>';
-    trashAbo.classList.add("trashAbo");
-    Abodiv.appendChild(trashAbo);
-    //append to Abo-list
-    abosList.appendChild(Abodiv);
+const render = () => {
+  let sum = 0;
+  abosList.innerHTML = abos.map(({name,price}) => { // grb the name and price from the object array
+    sum += price; // sum it for the montantTotal
+    // create an array of template literals
+    return `<div class="abo"><li>${name}</li><div class="abo-price">${price}</div><span>€</span>
+  <button type="button" class="modifyAbo"><i class="fa fa-pen"></i></button>
+  <button type="button" class="trashAbo"><i class="fa fa-trash"></i></button>
+  </div>`
+  }).join(""); // and join them with nothing
 
-    //total Amount of every newAboPrice
+  montantTotal.innerHTML = "total amount : " + sum.toFixed(2) + " € "
 
-    montantTotal.innerHTML = parseFloat(oneAboPrice.textContent) + parseFloat(oneAboPrice.textContent) ;
-    //reset input value
-    nameInput.value ="";
-    price.value="";
 
-    //store every .abo price (oneAboPrice)value into an array (this is where i need help)
-    var pricesValues = [];
-    for (var i = 0; i < oneAboPrice.length; i++) {
-        pricesValues.push(oneAboPrice[i].textContent);
-    }
-    console.log(pricesValues); /*dont show the values of every oneAboPrice*/
+}
+
+function addAbo(event) {
+  event.preventDefault();
+  abos.push({ name: nameInput.value, price: +price.value }); // create an array of names,prices 
+  //reset input value
+  nameInput.value = "";
+  price.value = "";
+  render(); // show the array
+  console.log(abos);
+
 }
 
 function clickModify(e) {
-    const item = e.target;
-    //Delete newAbo
-    if(item.classList[0] === "trashAbo"){
-        const abo = item.parentElement;
-    abo.remove();
-    }
-    //modify newAbo (To do)
-
+  const item = e.target.closest('button');
+  //Delete newAbo
+  if (item.classList.contains("trashAbo")) {
+    const parent = item.closest('div')
+    const name = parent.querySelector('li').textContent; // save the name
+    parent.remove(); // before removing
+    abos = abos.filter(item => item.name != name); // remove the object with the name from the array
+  } else if (item.classList.contains("modifyAbo")) {
+    const parent = item.closest('div');
+    const aboName = parent.querySelector('li').textContent; // copy from the div
+    const aboPrice = +parent.querySelector('.abo-price').textContent; // copy from the div 
+    nameInput.value = aboName; // set the form values
+    price.value = aboPrice;    // so they can be edited
+    abos = abos.filter(item => item.name != aboName); // remove the abo so valide will add it back
+  }
+  render()
 }
 
+// enter key --> validate
 
+var input = document.querySelector(".price");
+input.addEventListener("keyup", function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        document.querySelector(".validate").click();
+    }
+});
 
-
-
+//localstorage of abos objects
 
